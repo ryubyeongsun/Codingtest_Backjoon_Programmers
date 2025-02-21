@@ -1,20 +1,22 @@
 
 import java.util.*;
+import java.io.*;
 public class Main {
-    public static void main(String[] argc){
+    public static void main(String[] argc) throws IOException{
 
-        Scanner s = new Scanner(System.in);
-        int n = s.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
         int arr[] = new int[n];
         int back = 0;
         int front = 0;
         
         
         for(int i=0; i<n; i++){
-            String cmd = s.next();
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String cmd = st.nextToken();
             switch (cmd) {
                 case "push": 
-                    int num = s.nextInt();
+                    int num = Integer.parseInt(st.nextToken());
                     arr[back] = num;
                     back++;
                     break;
