@@ -1,20 +1,22 @@
 
 import java.util.*;
+import java.io.*;
 public class Main {
-    public static void main(String[] argc){
-        Scanner s = new Scanner(System.in);
+    public static void main(String[] argc)throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         LinkedList<Integer> list = new LinkedList<>();
-        int n = s.nextInt();
+        int n = Integer.parseInt(br.readLine());
 
         for(int i=0; i<n; i++){
-            String cmd = s.next();
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String cmd = st.nextToken();
             switch (cmd) {
                 case "push_front":
-                    int fnum = s.nextInt();
+                    int fnum = Integer.parseInt(st.nextToken());
                     list.addFirst(fnum);
                     break;
                 case "push_back":
-                    int bnum = s.nextInt();
+                    int bnum = Integer.parseInt(st.nextToken());
                     list.addLast(bnum);
                     break;
                 case "pop_front":
