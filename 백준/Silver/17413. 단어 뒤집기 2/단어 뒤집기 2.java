@@ -1,11 +1,11 @@
 
-
 import java.util.*;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        String word = s.nextLine();  
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String word = br.readLine();
         StringBuilder result = new StringBuilder();
         StringBuilder rev = new StringBuilder();
         boolean dis = false;
@@ -42,6 +42,7 @@ public class Main {
             result.append(rev.reverse());
             
         }
+
         System.out.println(result); 
     }
 }
