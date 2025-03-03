@@ -1,36 +1,26 @@
-import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner n = new Scanner(System.in);
-		
-		String str=n.nextLine();
-		String arr[] =str.split("");
-		int sum[] =new int [26];
-	
-		String[] alpa = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
-		"n", "o", "p", "q", "r", "s", "t", "u", "v","w", "x", "y", "z"};
-		for(int i=0; i<alpa.length; i++){
-			sum[i]=-1;
-			for(int j=0; j<arr.length; j++){
-			if(arr[j].equals(alpa[i])){
-				 
-				  sum[i]=j;
-				  break;
-			 }
-				
-			
-	    }
-		
-		}
+import java.util.*;
+import java.io.*;
 
-		for(int k=0; k<sum.length; k++){
-			System.out.print(sum[k]+" ");
-		}
+public class Main{
+    public static void main(String[] argc) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String word = br.readLine();
+        int arr[] = new int[26];
+        for(int i=0; i<arr.length; i++){
+            arr[i] = -1;
+        }
+        for(int i=0; i<word.length(); i++){
+            
+            if(arr[word.charAt(i)-'a'] == -1 ){
+                arr[word.charAt(i)-'a'] = i;
+            }
 
-	
-		
-    
-        
+        }
+        for(int i = 0; i<arr.length; i++){
+            System.out.print(arr[i]+" ");
+        }
+
+
     }
 }
