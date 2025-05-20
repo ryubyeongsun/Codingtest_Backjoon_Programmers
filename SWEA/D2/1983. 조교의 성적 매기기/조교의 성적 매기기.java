@@ -26,18 +26,18 @@ class Solution {
 
 			float[] sort = arr.clone();
 			Arrays.sort(sort); 
-			int rank = 0;
+			int z = 0;
 			for(int i = num - 1; i >= 0; i--) {
 				if(sort[i] == krr) {
-					rank = num - 1 - i;
+					z = num - 1 - i;
 					break;
 				}
 			}
 
 			String[] grade = {"A+", "A0", "A-" , "B+" , "B0", "B-" , "C+", "C0", "C-", "D0"};
-			int per = num / 10;
+			int jug = num / 10;
 
-			String result = grade[rank / per];
+			String result = grade[z / jug];
 			System.out.println("#" + test_case + " " + result);
 		}
 	}
