@@ -1,60 +1,64 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
-class Main{
-    static int arr[][];
-    static boolean[][] visit;
+public class Main{
+    static int N;
+    static int M;
     static int dx[] = {-1,1,0,0};
     static int dy[] = {0,0,-1,1};
-    public static void main(String[] argc) throws IOException{
+    static int arr[][];
+    static boolean visit[][];
+    public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
-        arr = new int[N+1][M+1];
-        for(int i=1; i<=N; i++){
-            String line = br.readLine();
-            for(int j=1; j<=M; j++){
-                arr[i][j] = line.charAt(j-1) - '0';
+        arr = new int[N][M];
+        visit = new boolean[N][M];
+
+        for(int i=0; i<N; i++){
+            String num = br.readLine();
+            for(int j=0; j<M; j++){
+                arr[i][j] = num.charAt(j)-'0';
             }
-
         }
-        visit = new boolean[N+1][M+1];
+        bfs(0,0);
 
-        bfs(1,1);
-
-        System.out.println(arr[N][M]);
-
-}
-    static void bfs(int a, int b){
-        Queue<int[]> q = new LinkedList<>();
-        q.add(new int[] {a,b});
-        visit[a][b] = true;
-        while (!q.isEmpty()) {
-            int cur[] = q.poll();
-            int cx = cur[0];
-            int cy = cur[1];
-
-            for(int i=0; i<4; i++){
-                int nx = cx+dx[i];
-                int ny = cy+dy[i];
-
-                if(nx<0 || ny<0 || nx > arr.length-1 || ny> arr[0].length-1){
-                    continue;
-                }
-                
-
-                if(arr[nx][ny] == 1 && !visit[nx][ny]){
-                    visit[nx][ny] = true;
-                    arr[nx][ny] = arr[cx][cy] + 1;
-                    q.add(new int[] {nx,ny});
-                }
-
-            }
-
-
-        }
+        bw.write(String.valueOf(arr[N-1][M-1]));
+        bw.flush();
+        bw.close();
+        
     }
-    
+
+    public static void bfs(int a, int b){
+        Queue<int []> q = new LinkedList<>();
+        visit[a][b] = true;
+        q.offer(new int[]{a,b});
+
+
+        while (!q.isEmpty()) {
+            int brr[] = q.poll();
+           
+            for(int i=0; i<4; i++){
+                int nx = brr[0]+dx[i];
+                int ny = brr[1]+dy[i];
+
+                if(nx>=0 && ny>=0 && nx<N && ny<M && !visit[nx][ny] && arr[nx][ny]==1){
+                    q.offer(new int[]{nx,ny});
+                    visit[nx][ny] = true;
+                    arr[nx][ny] = arr[brr[0]][brr[1]] + 1;
+
+                }
+
+            }
+
+
+        }
+
+
+
+    }
+
 }
