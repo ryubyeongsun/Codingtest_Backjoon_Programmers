@@ -1,3 +1,7 @@
+/**
+ * 메모리: 1
+ */
+
 import java.util.*;
 import java.io.*;
 
@@ -6,6 +10,7 @@ public class Main {
     static StringBuilder sb;
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int N = Integer.parseInt(br.readLine());
         list = new ArrayList[N];
 
@@ -23,18 +28,22 @@ public class Main {
 
             sb = new StringBuilder();
             pre_dfs('A');
-            System.out.println(sb);
+            bw.write(sb.toString());
+            bw.newLine();
 
             sb = new StringBuilder();
             in_dfs('A');
-            System.out.println(sb);
-            sb = new StringBuilder();
+            bw.write(sb.toString());
+            bw.newLine();
 
+            sb = new StringBuilder();
             pos_dfs('A');
             sb.append('A');
-            System.out.println(sb);
-           
-        
+            bw.write(sb.toString());
+            
+            bw.flush();
+            bw.close();
+            br.close();
 
     }
     public static void pre_dfs(char a){
