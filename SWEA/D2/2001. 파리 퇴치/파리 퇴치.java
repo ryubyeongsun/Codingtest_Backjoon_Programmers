@@ -5,38 +5,39 @@ class Solution
 	public static void main(String args[]) throws Exception
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int T = Integer.parseInt(br.readLine());
 		
 		for(int test_case = 1; test_case <= T; test_case++)
 		{
-			StringTokenizer st = new StringTokenizer(br.readLine());
-            int n = Integer.parseInt(st.nextToken());
-            int m = Integer.parseInt(st.nextToken());
-            int arr[][] = new int[n][n];
-            int sum = 0;
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
+
             int max = 0;
-            
-            for(int i=0; i<n; i++){
+            int arr[][] = new int[N+1][N+1];
+            int sum[][] = new int[N+1][N+1];
+
+            for(int i=1; i<=N; i++){
                 st = new StringTokenizer(br.readLine());
-            	for(int j=0; j<n; j++){
-                	arr[i][j] = Integer.parseInt(st.nextToken());
+                for(int j=1; j<=N; j++){
+                    arr[i][j] = Integer.parseInt(st.nextToken());
+                    sum[i][j] = sum[i-1][j] + sum[i][j-1] + arr[i][j] - sum[i-1][j-1];
                 }
             }
-			for(int i=0; i<n; i++){
-				for(int j=0; j<n; j++){
-                	for(int k=i; k<i+m; k++){
-                     	for(int z=j; z<j+m; z++){
-                            if(i+m>n || j+m>n || i<0 || j<0){ continue;}
-                        	 sum+= arr[k][z];
-                            max = Math.max(max, sum);
-                            
-                        }
-                    }
-                    sum=0;
+            
+            for(int i=M; i<=N; i++){
+                for(int j=M; j<=N; j++){
+                    int total = sum[i][j] - sum[i-M][j] - sum[i][j-M] + sum[i-M][j-M];
+                    max = Math.max(max, total);
                 }
             }
-            System.out.println("#" + test_case + " " + max);
+            
+            bw.write("#" + test_case + " " + max);
+            bw.newLine();
+
 		}
-        
+        bw.close();
+        br.close();
 	}
 }
