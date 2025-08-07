@@ -1,50 +1,54 @@
 import java.util.*;
 import java.io.*;
 class Solution
-{ 
+{  
     static int arr[][];
-    static int max = 0;
-    static int sum_p=0;
-    static int sum_cal=0;
-    static int max_cal;
-    static int num;
-    
+    static int N;
+    static int L;
+    static int calsum;
+    static int point;
+    static int max;
 	public static void main(String args[]) throws Exception
 	{
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int T = Integer.parseInt(br.readLine());
 		for(int test_case = 1; test_case <= T; test_case++)
 		{	
-            StringTokenizer st= new StringTokenizer(br.readLine());
-            num = Integer.parseInt(st.nextToken());
-            max_cal = Integer.parseInt(st.nextToken());
-            arr = new int[num][2];
-            
-            for(int i=0; i<num; i++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
+             N = Integer.parseInt(st.nextToken());
+             L = Integer.parseInt(st.nextToken());
+
+            arr = new int[N][2];
+
+            for(int i=0; i<N; i++){
                 st = new StringTokenizer(br.readLine());
-            	for(int j=0; j<2; j++){
-                	arr[i][j] = Integer.parseInt(st.nextToken());
+                for(int j=0; j<2; j++){
+                    arr[i][j] = Integer.parseInt(st.nextToken());
                 }
             }
-            
-			dfs(0,0,0);
-            System.out.println("#" + test_case + " " + max);
             max = 0;
-            sum_p=0;
-            sum_cal=0;
-            
+            point = 0;
+            calsum = 0;
+            dfs(0, 0, 0);
+            bw.write("#" + test_case + " " + max);
+            bw.newLine();
 		}
+        bw.close();
+        
 	}
-    static void dfs(int index, int sum_p, int sum_cal){
-    	if(sum_cal>max_cal) return;
-        if(index==num) {
-        	max = Math.max(max, sum_p);
+    public static void dfs(int dep, int point, int calsum){
+        if(calsum>L)  return;
+        if(N==dep){
+            max = Math.max(max, point);
             return;
         }
-        dfs(index+1, sum_p+arr[index][0], sum_cal+arr[index][1]);
         
-        dfs(index+1, sum_p, sum_cal);
-        
+        dfs(dep+1,point+arr[dep][0] , calsum+arr[dep][1]);
+
+        dfs(dep+1,point,calsum);
+            
     }
+    
 }
