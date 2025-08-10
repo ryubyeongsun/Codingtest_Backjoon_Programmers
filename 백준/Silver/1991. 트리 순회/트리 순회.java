@@ -1,81 +1,77 @@
-/**
- * 메모리: 1
- */
-
 import java.util.*;
 import java.io.*;
 
 public class Main {
-    static ArrayList<Character> list[];
+
+    static ArrayList<Character> word[];
     static StringBuilder sb;
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         int N = Integer.parseInt(br.readLine());
-        list = new ArrayList[N];
+        word = new ArrayList[N];
 
         for(int i=0; i<N; i++){
-            list[i] = new ArrayList<>();
+            word[i] = new ArrayList<>();
         }
+
         for(int i=0; i<N; i++){
             StringTokenizer st = new StringTokenizer(br.readLine());
-            char root = st.nextToken().charAt(0);
-            char left = st.nextToken().charAt(0);
-            char right = st.nextToken().charAt(0);
-            list[root-'A'].add(left); 
-            list[root-'A'].add(right); 
-        }
-
-            sb = new StringBuilder();
-            pre_dfs('A');
-            bw.write(sb.toString());
-            bw.newLine();
-
-            sb = new StringBuilder();
-            in_dfs('A');
-            bw.write(sb.toString());
-            bw.newLine();
-
-            sb = new StringBuilder();
-            pos_dfs('A');
-            sb.append('A');
-            bw.write(sb.toString());
+                char node = st.nextToken().charAt(0);
+                char left = st.nextToken().charAt(0);
+                char right = st.nextToken().charAt(0);
+                word[node-'A'].add(left);
+                word[node-'A'].add(right);
+                
             
-            bw.flush();
-            bw.close();
-            br.close();
+        }
+        sb = new StringBuilder();
+        pre_dfs('A');
+        System.out.println(sb);
+
+        sb = new StringBuilder();
+        in_dfs('A');
+        System.out.println(sb);
+
+        sb = new StringBuilder();
+        po_dfs('A');
+        System.out.println(sb);
 
     }
-    public static void pre_dfs(char a){
-        if(a=='.') return;
+
+    public static void pre_dfs(char a ){
+
+        if(a == '.') return;
+
         sb.append(a);
-        if(list[a-'A'].get(0) == '.' && list[a-'A'].get(1)=='.'){
-            return;
+        for(char w : word[a-'A']){
+            pre_dfs(w);
+
         }
-        
-        
-        for(char n : list[a-'A']){
-            pre_dfs(n);
-        }
+
     }
     public static void in_dfs(char a){
+
+        if(a=='.'){
+            return;
+        }
+
+        in_dfs(word[a-'A'].get(0));
+        sb.append(a);
+        in_dfs((word[a-'A'].get(1)));
+
+    }
+    public static void po_dfs(char a){
+
         if(a=='.') return;
 
-        in_dfs(list[a-'A'].get(0));
+
+        po_dfs(word[a-'A'].get(0));
+        po_dfs(word[a-'A'].get(1));
         sb.append(a);
-        in_dfs(list[a-'A'].get(1));
-
     }
 
-    public static void pos_dfs(char a){
 
-        for(char n : list[a-'A']){
-            if(n!='.'){
-                pos_dfs(n);
-                sb.append(n);
-            }
-          
-        }
-    }
 
 }
