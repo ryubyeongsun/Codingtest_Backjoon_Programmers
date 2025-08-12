@@ -73,6 +73,7 @@
 ### 🚀 Unrated
 | 문제번호 | 링크 |
 | ----- | ----- |
+|1949. ［모의 SW 역량테스트］ 등산로 조성|[링크](./SWEA/Unrated/1949.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EB%93%B1%EC%82%B0%EB%A1%9C%E2%80%85%EC%A1%B0%EC%84%B1/README.md)|
 |4008. ［모의 SW 역량테스트］ 숫자 만들기|[링크](./SWEA/Unrated/4008.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EC%88%AB%EC%9E%90%E2%80%85%EB%A7%8C%EB%93%A4%EA%B8%B0/README.md)|
 ## 📚 백준
 ### 🚀 Bronze
