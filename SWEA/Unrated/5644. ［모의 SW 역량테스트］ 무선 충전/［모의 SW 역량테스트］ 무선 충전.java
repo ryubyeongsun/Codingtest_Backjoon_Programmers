@@ -1,3 +1,12 @@
+/**
+ * 메모리: 27,776kb
+ * 실행시간: 107ms
+ * 문제: swea 5644 무선충전
+ * 아이디어:
+ * 
+ * 
+ */
+
 import java.util.*;
 import java.io.*;
 
@@ -50,15 +59,14 @@ class Solution {
         int total = 0;
 
         for (int i = 0; i <= M; i++) {
-            if (i > 0) {
-                Anx += dx[arr[i]];
-                Any += dy[arr[i]];
-                Bnx += dx[brr[i]];
-                Bny += dy[brr[i]];
-            }
+            Anx += dx[arr[i]];
+            Any += dy[arr[i]];
+            Bnx += dx[brr[i]];
+            Bny += dy[brr[i]];
+    
 
-            List<Integer> listA = new ArrayList<>();
-            List<Integer> listB = new ArrayList<>();
+            ArrayList<Integer> listA = new ArrayList<>();
+            ArrayList<Integer> listB = new ArrayList<>();
 
             for (int j = 0; j < A; j++) {
                 if ( Math.abs(Anx - ap[j][0]) + Math.abs(Any - ap[j][1]) <= ap[j][2]) {
