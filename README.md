@@ -130,6 +130,10 @@
 |2133. 타일 채우기|[링크](./%EB%B0%B1%EC%A4%80/Gold/2133.%E2%80%85%ED%83%80%EC%9D%BC%E2%80%85%EC%B1%84%EC%9A%B0%EA%B8%B0/README.md)|
 |3109. 빵집|[링크](./%EB%B0%B1%EC%A4%80/Gold/3109.%E2%80%85%EB%B9%B5%EC%A7%91/README.md)|
 |7576. 토마토|[링크](./%EB%B0%B1%EC%A4%80/Gold/7576.%E2%80%85%ED%86%A0%EB%A7%88%ED%86%A0/README.md)|
+### 🚀 Platinum
+| 문제번호 | 링크 |
+| ----- | ----- |
+|16930. 달리기|[링크](./%EB%B0%B1%EC%A4%80/Platinum/16930.%E2%80%85%EB%8B%AC%EB%A6%AC%EA%B8%B0/README.md)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
 | ----- | ----- |
