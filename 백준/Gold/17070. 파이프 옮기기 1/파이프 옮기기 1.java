@@ -1,7 +1,13 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+/**
+ * 메모리: 14260KB
+ * 실행시간: 108ms
+ * 문제: 백준 17070 파이프옮기기1
+ * 아이디어:
+ * 
+ */
+
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
