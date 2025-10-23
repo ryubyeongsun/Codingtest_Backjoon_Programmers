@@ -5,33 +5,38 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        
-        TreeMap<Integer, List<Integer>> endTimeMap = new TreeMap<>();
-        
+        TreeMap<Integer, List<Integer>> map = new TreeMap<>();
+
         for (int i = 0; i < N; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int start = Integer.parseInt(st.nextToken());
             int end = Integer.parseInt(st.nextToken());
-            
-            endTimeMap.putIfAbsent(end, new ArrayList<>());
-            endTimeMap.get(end).add(start);
+
+            if (!map.containsKey(end)) {
+                map.put(end, new ArrayList<>());
+            }
+            map.get(end).add(start);
         }
-        
+
+        for (List<Integer> list : map.values()) {
+            Collections.sort(list);
+        }
+
+        int endTime = 0;
         int count = 0;
-        int lastEnd = 0;
-        
-        for (int endTime : endTimeMap.keySet()) {
-            List<Integer> startTimes = endTimeMap.get(endTime);
-            Collections.sort(startTimes);
-            
-            for (int start : startTimes) {
-                if (start >= lastEnd) {
+
+        for (Map.Entry<Integer, List<Integer>> entry : map.entrySet()) {
+            int end = entry.getKey();
+            List<Integer> starts = entry.getValue();
+
+            for (int start : starts) {
+                if (start >= endTime) {
                     count++;
-                    lastEnd = endTime;
+                    endTime = end;
                 }
             }
         }
-        
+
         System.out.println(count);
     }
 }
